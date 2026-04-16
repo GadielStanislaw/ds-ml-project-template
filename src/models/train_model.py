@@ -6,7 +6,7 @@ import pandas as pd
 import joblib
 from pathlib import Path
 
-# IMPORTANTE: Los alumnos deben importar los algoritmos que quieran usar, por ejemplo:
+# IMPORTANTE: Se debe importar los algoritmos que quieran usar, por ejemplo:
 # from sklearn.ensemble import RandomForestRegressor
 # from sklearn.metrics import mean_squared_error
 

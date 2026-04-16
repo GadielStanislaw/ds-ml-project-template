@@ -14,21 +14,5 @@ __pycache__/
 # Jupyter Notebooks
 .ipynb_checkpoints/
 
-# Directorio de Datos (NO SUBIR DATOS A GIT POR DEFECTO)
-data/raw/
-data/interim/
-data/processed/
-data/external/
-
-# Mantener la estructura de carpetas de datos aunque estén vacías
-!data/raw/.gitkeep
-!data/interim/.gitkeep
-!data/processed/.gitkeep
-!data/external/.gitkeep
-
-# Modelos
-models/
-!models/.gitkeep
-
 # Mac OS
 .DS_Store

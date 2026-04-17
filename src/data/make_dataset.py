@@ -25,6 +25,7 @@ def fetch_housing_data(housing_url: str, housing_path: str):
     print(f"Datos descargados y extraídos en: {housing_path}")
 
 if __name__ == "__main__":
+    ROOT = Path(__file__).resolve().parents[2]
     URL = "https://github.com/ageron/data/raw/main/housing.tgz"
-    PATH = "../data/raw/"
+    PATH = str(ROOT / "data" / "raw")
     fetch_housing_data(URL, PATH)

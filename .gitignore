@@ -3,7 +3,9 @@
 venv/
 env/
 .env
-
+.idea/
+models/*.joblib
+models/*.pkl
 # Caché y artefactos de Python
 __pycache__/
 *.py[cod]

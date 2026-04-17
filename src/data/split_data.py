@@ -38,6 +38,7 @@ def split_and_save_data(raw_data_path: str, interim_data_path: str):
     print(f"Guardados en: {interim_data_path}")
 
 if __name__ == "__main__":
-    RAW_PATH = "../data/raw/housing/housing.csv"
-    INTERIM_PATH = "../data/interim/"
+    ROOT = Path(__file__).resolve().parents[2]
+    RAW_PATH = str(ROOT / "data" / "raw" / "housing" / "housing.csv")
+    INTERIM_PATH = str(ROOT / "data" / "interim")
     split_and_save_data(RAW_PATH, INTERIM_PATH)

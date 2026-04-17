@@ -3,6 +3,7 @@ Módulo para limpieza y enriquecimiento (Feature Engineering) usando funciones s
 """
 
 import pandas as pd
+from pathlib import Path
 from sklearn.preprocessing import StandardScaler
 
 def clean_data(df: pd.DataFrame) -> pd.DataFrame:
@@ -64,11 +65,24 @@ def preprocess_pipeline(df: pd.DataFrame) -> pd.DataFrame:
 
 if __name__ == "__main__":
     import sys
+    ROOT = Path(__file__).resolve().parents[2]
+
     if len(sys.argv) == 3:
         input_path, output_path = sys.argv[1], sys.argv[2]
-        df = pd.read_csv(input_path)
-        df_processed = preprocess_pipeline(df)
-        df_processed.to_csv(output_path, index=False)
-        print(f"Procesado guardado en: {output_path}")
     else:
-        print("Uso: python build_features.py <input_csv> <output_csv>")
+        # Rutas por defecto: procesa train y test desde interim → processed
+        for split in ["train_set", "test_set"]:
+            in_path  = ROOT / "data" / "interim" / f"{split}.csv"
+            out_path = ROOT / "data" / "processed" / f"{split.replace('_set', '_processed')}.csv"
+            out_path.parent.mkdir(parents=True, exist_ok=True)
+            df = pd.read_csv(in_path)
+            df_processed = preprocess_pipeline(df)
+            df_processed.to_csv(out_path, index=False)
+            print(f"Procesado guardado en: {out_path}")
+        sys.exit(0)
+
+    Path(output_path).parent.mkdir(parents=True, exist_ok=True)
+    df = pd.read_csv(input_path)
+    df_processed = preprocess_pipeline(df)
+    df_processed.to_csv(output_path, index=False)
+    print(f"Procesado guardado en: {output_path}")

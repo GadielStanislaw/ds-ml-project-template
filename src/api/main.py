@@ -36,7 +36,7 @@ bundle = None
 def load_model():
     global bundle
     try:
-        bundle = joblib.load("models/best_model.pkl")
+        bundle = joblib.load("models/best_model.joblib")
         print("Modelo cargado correctamente.")
         print(f"Columnas esperadas: {bundle['feature_cols']}")
     except Exception as e:
